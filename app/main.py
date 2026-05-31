@@ -10,6 +10,7 @@ import logging
 setup_loggging()
 logger = logging.getLogger(__name__)
 
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # startup code
@@ -20,11 +21,11 @@ async def lifespan(app: FastAPI):
     # shutdown code
     logger.info("Shutting down the application...")
 
+
 app = FastAPI(title="FastAPI Async Postgres Learning", lifespan=lifespan)
+
 
 @app.get("/")
 async def home():
     logger.info("Received request for home endpoint")
-    return {
-        "message": "Welcome to FastAPI Async Postgres Learning!"
-        }
+    return {"message": "Welcome to FastAPI Async Postgres Learning!"}
