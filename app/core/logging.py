@@ -4,6 +4,7 @@ import sys
 
 from app.core.config import settings
 
+
 def setup_loggging() -> None:
     logging.config.dictConfig(
         {
@@ -11,24 +12,16 @@ def setup_loggging() -> None:
             "disable_existing_loggers": False,
             "formatters": {
                 "standard": {
-                    "format": (
-                        "%(asctime)s | "
-                        "%(levelname)s | "
-                        "%(name)s | "
-                        "%(message)s"
-                    )
+                    "format": ("%(asctime)s | %(levelname)s | %(name)s | %(message)s")
                 }
             },
             "handlers": {
                 "console": {
                     "class": "logging.StreamHandler",
                     "stream": sys.stdout,
-                    "formatter": "standard"
+                    "formatter": "standard",
                 }
             },
-            "root": {
-                "handlers": ["console"],
-                "level": settings.LOG_LEVEL
-            }
+            "root": {"handlers": ["console"], "level": settings.LOG_LEVEL},
         }
     )
